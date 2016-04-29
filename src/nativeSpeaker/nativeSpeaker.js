@@ -1,11 +1,9 @@
 import BaseSpeaker from './../baseSpeaker';
 import NativeChapter from './nativeChapter';
-import BaseTrack from './../baseTrack';
 
 export default class NativeSpeaker extends BaseSpeaker {
-  constructor(source) {
-    super(source);
-    this.Chapter = NativeChapter;
+  constructor() {
+    super('native');
   }
   
   static available(cb) {
@@ -35,3 +33,5 @@ export default class NativeSpeaker extends BaseSpeaker {
     }
   }
 }
+
+NativeSpeaker.Chapter = NativeChapter;

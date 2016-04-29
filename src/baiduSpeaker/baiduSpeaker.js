@@ -1,11 +1,9 @@
 import BaseSpeaker from './../baseSpeaker';
 import BaiduChapter from './baiduChapter';
-import BaseTrack from './../baseTrack';
 
 export default class BaiduSpeaker extends BaseSpeaker {
-  constructor(source) {
-    super(source);
-    this.Chapter = BaiduChapter;
+  constructor() {
+    super('baidu');
   }
 
   static available(cb) {
@@ -67,3 +65,5 @@ export default class BaiduSpeaker extends BaseSpeaker {
     }
   }
 }
+
+BaiduSpeaker.Chapter = BaiduChapter;
