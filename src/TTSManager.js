@@ -1,3 +1,5 @@
+import Console from './_utils/devtoolConsole';
+
 export default class TTSManager {
   constructor(speakers) {
     // build speakers
@@ -53,14 +55,14 @@ export default class TTSManager {
     cb = cb || this.noop;
     err = err || this.noop;
     if (this.speaker) {
-      console.log('speaking start: ' + msg);
+      Console.log('speaking start: ' + msg);
       var chapter = new this.speaker.factory.Chapter(msg);
       var speaker = this.speaker.speaker;
       this.speaking = true;
       var self = this;
       speaker.speak(chapter, function() {
         self.speaking = false;
-        console.log('speaking end: ' + msg);
+        Console.log('speaking end: ' + msg);
         cb();
       }, function () {
         self.speaking = false;
