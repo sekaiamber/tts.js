@@ -55,9 +55,9 @@ export default class TTSManager {
     cb = cb || this.noop;
     err = err || this.noop;
     if (this.speaker) {
-      Console.log('speaking start: ' + msg);
       var chapter = new this.speaker.factory.Chapter(msg);
       var speaker = this.speaker.speaker;
+      Console.log('speaking start: ' + msg);
       this.speaking = true;
       var self = this;
       speaker.speak(chapter, function() {
@@ -66,38 +66,44 @@ export default class TTSManager {
         cb();
       }, function () {
         self.speaking = false;
+        Console.log('an error occor');
+        Console.log('speaking end: ' + msg);
         err();
       });
     }
   }
   
   speakTrack(msgs, cb, opts, err) {
-      opts = opts || this.noop;
-      cb = cb || this.noop;
-      err = err || this.noop;
-      var self = this;
-      if (typeof opts == 'function') {
-        opts = {
-          onChapterEnded: opts
-        }
+    opts = opts || this.noop;
+    cb = cb || this.noop;
+    err = err || this.noop;
+    var self = this;
+    if (typeof opts == 'function') {
+      opts = {
+        onChapterEnded: opts
       }
-      msgs = msgs.map(function(msg) {
-        return new self.speaker.factory.Chapter(msg);
-      });
-      var track = new this.speaker.factory.Track(msgs);
-      for (var key in opts) {
-        if (opts.hasOwnProperty(key)) {
-          track[key] = opts[key];
-        }
-      }
-      var speaker = this.speaker.speaker;
-      this.speaking = true;
-      speaker.speak(track, function() {
-        self.speaking = false;
-        cb();
-      }, function () {
-        self.speaking = false;
-        err();
-      });
     }
+    msgs = msgs.map(function(msg) {
+      return new self.speaker.factory.Chapter(msg);
+    });
+    var track = new this.speaker.factory.Track(msgs);
+    for (var key in opts) {
+      if (opts.hasOwnProperty(key)) {
+        track[key] = opts[key];
+      }
+    }
+    var speaker = this.speaker.speaker;
+    Console.log('speaking track start');
+    this.speaking = true;
+    speaker.speak(track, function() {
+      self.speaking = false;
+      Console.log('speaking track end');
+      cb();
+    }, function () {
+      self.speaking = false;
+      Console.log('an error occor');
+      Console.log('speaking track end');
+      err();
+    });
+  }
 }
