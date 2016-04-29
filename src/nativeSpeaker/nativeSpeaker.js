@@ -6,7 +6,6 @@ export default class NativeSpeaker extends BaseSpeaker {
   constructor(source) {
     super(source);
     this.Chapter = NativeChapter;
-    this.Track = BaseTrack;
   }
   
   static available(cb) {

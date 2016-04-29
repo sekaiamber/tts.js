@@ -6,7 +6,6 @@ export default class BaiduSpeaker extends BaseSpeaker {
   constructor(source) {
     super(source);
     this.Chapter = BaiduChapter;
-    this.Track = BaseTrack;
   }
 
   static available(cb) {
