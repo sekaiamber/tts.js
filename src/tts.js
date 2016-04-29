@@ -15,10 +15,10 @@ import TTSManager from './TTSManager';
 import {Speakers} from './speakers';
 
 (function(context) {
-  window.TTSManager = TTSManager;
+  context.TTSManager = TTSManager;
   for (var key in Speakers) {
     if (Speakers.hasOwnProperty(key)) {
-      window[key] = Speakers[key];
+      context[key] = Speakers[key];
     }
   }
 })(window);
