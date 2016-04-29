@@ -10,7 +10,7 @@
  *  version: 0.0.1
  *  source:  github.com/sekaiamber/tts.js
  */
-
+require('./_utils/devtooldetect');
 import TTSManager from './TTSManager';
 import {Speakers} from './speakers';
 
