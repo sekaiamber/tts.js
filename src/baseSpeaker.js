@@ -2,16 +2,14 @@ import BaseTrack from './baseTrack';
 import BaseChapter from './baseChapter';
 
 export default class BaseSpeaker {
-  constructor(source) {
-    this.source = source;
-    this.Track = BaseChapter;
-    this.Chapter = BaseChapter;
+  constructor(name) {
+    this.name = name;
   }
-  speak(cb, err) {
+  speak(source, cb, err) {
     cb = cb || this.noop;
     err = err || this.noop;
     try {
-      this.source.play(cb, err);
+      source.play(cb, err);
     } catch (e) {
       err(e);
     }
@@ -21,3 +19,6 @@ export default class BaseSpeaker {
   
   static available(cb) { throw new Error('Not yet implemented'); };
 }
+
+BaseSpeaker.Track = BaseTrack;
+BaseSpeaker.Chapter = BaseChapter;

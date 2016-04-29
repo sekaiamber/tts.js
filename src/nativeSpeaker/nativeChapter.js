@@ -20,7 +20,7 @@ export default class NativeChapter extends BaseChapter {
     this.source = this.utterance;
   }
   
-  play() {
+  play(cb, err) {
     // this.utterance.onend = function(e) {
     //   cb(e);
     // };
