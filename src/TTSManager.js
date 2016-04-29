@@ -90,7 +90,6 @@ export default class TTSManager {
       }
       var speaker = this.speaker.speaker;
       this.speaking = true;
-      console.log(track);
       speaker.speak(track, function() {
         self.speaking = false;
         cb();
