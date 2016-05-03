@@ -1,4 +1,4 @@
-/**
+/*
  * tts.js
  *
  * Copyright 2016 Xu Xiaomeng(@sekaiamber)
@@ -7,9 +7,11 @@
  *
  * ------------------------------------------------
  *  author:  Xu Xiaomeng
- *  version: 0.0.1
+ *  version: 0.1
  *  source:  github.com/sekaiamber/tts.js
  */
+/*! tts.js v0.1 github.com/sekaiamber/tts.js */
+
 require('./_utils/devtooldetect');
 import TTSManager from './TTSManager';
 import {Speakers} from './speakers';

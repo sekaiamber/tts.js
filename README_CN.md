@@ -124,13 +124,13 @@ var ttsmanager = new TTSManager([NativeSpeaker, BaiduSpeaker]);
 // 探测BaiduSpeaker是否可用
 ```
 
-#### .availableChange( callback )
+#### .available( callback )
 
 如果一个Speaker的可用状态改变时，回调函数将被调用。
 
 ```javascript
 var ttsmanager = new TTSManager([NativeSpeaker, BaiduSpeaker]);
-ttsmanager.availableChange(function(res) {
+ttsmanager.available(function(res) {
   console.log(res);
 });
 // 这里回调函数可能被调用2次。

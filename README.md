@@ -127,16 +127,16 @@ var ttsmanager = new TTSManager([NativeSpeaker, BaiduSpeaker]);
 // is available.
 ```
 
-#### .availableChange( callback )
+#### .available( callback )
 
 When a speaker's available state changes, the callback will be invoked.
 
 ```javascript
 var ttsmanager = new TTSManager([NativeSpeaker, BaiduSpeaker]);
-ttsmanager.availableChange(function(res) {
+ttsmanager.available(function(res) {
   console.log(res);
 });
-// availableChange's callback may be invoked 2 times here.
+// available's callback may be invoked 2 times here.
 ```
 
 #### .speak(msg [, cb [, err ]] )
