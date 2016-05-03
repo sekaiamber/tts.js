@@ -162,3 +162,9 @@ ttsmanager.speakTrack([
   'There is a beautiful girl'
 ]);
 ```
+
+## LICENSE
+
+Copyright 2016 Xu Xiaomeng(@sekaiamber)
+
+Released under the MIT and GPL (version 2 or later) Licenses.
