@@ -1,13 +1,13 @@
 # tts.js
 *v0.1*
 
-中文文档看[这里](README_CN.md)
+For English document, click [here](README.md).
 
-## Description
-Javascript API for the Text-to-Speech service, provide an interface to manage built-in TTS speaker or your own TTS service.
+## 简介
+使用JavaScript实现的TTS服务API，这个库提供了几个内置的TTS Speaker，也提供了一个用来管理这些Speaker或者你自己实现的Speaker的Manager和接口。
 
-## Develop
-I use webpack as module bundler. The code depend on following project:
+## 开发
+我用Webpack来作为打包工具。本项目依赖下面的项目或工具：
 
 * Node.js(NPM)
 * [Webpack](https://webpack.github.io/)
@@ -16,74 +16,72 @@ I use webpack as module bundler. The code depend on following project:
 $ cd path/to/repo
 ```
 
-Install dependencies.
+安装依赖
 ```shell
 $ npm install
 ```
 
-Build `.min.js` file, run following command, and find min file in `/tts.js/`:
+执行如下命令来打包压缩`.min.js`文件，你可以在`/tts.js/`目录下找到它:
 ```shell
 $ npm run build
 ```
 
-## Usage
+## API文档
 
 ### Speaker
 
-`tts.js` use `Speaker` class to handle each TTS service.
+`tts.js`使用`Speaker`这个类来处理和表示每种TTS服务。
 
 #### .available( callback )
 
-Each speaker provide an static `available` function to tell whether this service is available, use `NativeSpeaker` as an example:
+每个Speaker提供一个叫`available`的静态函数来返回浏览器当前是否支持这个TTS服务，以`NativeSpeaker`来举个例子：
 
 ```javascript
-// NativeSpeaker will detect whether your browser support
-// speechSynthesis or not
+// NativeSpeaker将探测浏览器是否支持speechSynthesis
 NativeSpeaker.available(function(res) {
   console.log(res);
 });
-// The result look like this:
+// 返回结果如下形式
 // {
 //   base: true,
 //   track: true,
 // }
-// This means the browser support NativeSpeaker's base service and
-// support play track.
+// 这表示浏览器支持NativeSpeaker的基本功能和支持播放Track
 ```
 
 #### .speak( source [, cb [, err]] )
 
-Speaker instance can speak an source class instance(Chapter or Track).
+Speaker实例可以播放Chapter实例或者Track实例（两者均继承自Source实例）。
 
 ```javascript
-// get an instance
+// 初始化一个Speaker
 var speaker = new NativeSpeaker();
 speaker.speak(a_chapter_or_track, function() {
   console.log('finish');
 });
 ```
 
-#### Chapter and Track
+#### Chapter和Track
 
-Speaker should implement 2 static properties: Chapter and Track. They can point which chapter or track class are recommended to be used in this speaker.
+Speaker类应该实现两个静态属性：Chapter和Track。它们能指出这个Speaker推荐使用哪个Chapter和Track。
 
 ```javascript
 var speaker = new NativeSpeaker();
-// use recommended Chapter
+// 使用推荐的Chapter
 var chapter = new NativeSpeaker.Chapter('Something to speak', 'en-US');
 speaker.speak(chapter);
-// use your own Chapter
+// 使用自己实现的Chapter
 var chapter2 = new MyNativeChapter('Something to speak');
 speaker.speak(chapter2);
 ```
 
 ### Chapter
 
-Chapter class is the base service of `tts.js`.
+Chapter类是`tts.js`中提供最基础功能的类.
 
 #### .play( [callback [, err ]] )
 
-Play a message.
+播放一段文字。
 
 ```javascript
 var chapter = new NativeSpeaker.Chapter('Something to speak', 'en-US');
@@ -92,11 +90,11 @@ chapter.play();
 
 ### Track
 
-Track class can combine multiple Chapters one by one.
+Track类可以将多个Chapter实例连接起来。
 
 #### .play( [callback [, err ]] )
 
-Play a list of messages.
+播放一系列文字。
 
 ```javascript
 var msgs = [
@@ -113,35 +111,34 @@ track.play();
 
 ### Use TTSManager
 
-Using `TTSManager` is an easy way to manage your TTS service from `tts.js`.
+使用`TTSManager`是一个很简单的方式来享受`tts.js`带来的TTS服务。
 
 #### constructor(speakers)
 
-Use one or more speakers to initialize TTSManager.
+使用一个或多个Speaker类来初始化TTSManager。
 
 ```javascript
-// Pass one or more speakers into manager
+// 将多个Speaker类传入TTSManager的构造器
 var ttsmanager = new TTSManager([NativeSpeaker, BaiduSpeaker]);
-// This means if NativeSpeaker is available, the manager will use
-// NativeSpeaker, if not, the manager will detect if BaiduSpeaker
-// is available.
+// 这意味着如果NativeSpeaker可用，则用NativeSpeaker，若它不可用，则去
+// 探测BaiduSpeaker是否可用
 ```
 
 #### .availableChange( callback )
 
-When a speaker's available state changes, the callback will be invoked.
+如果一个Speaker的可用状态改变时，回调函数将被调用。
 
 ```javascript
 var ttsmanager = new TTSManager([NativeSpeaker, BaiduSpeaker]);
 ttsmanager.availableChange(function(res) {
   console.log(res);
 });
-// availableChange's callback may be invoked 2 times here.
+// 这里回调函数可能被调用2次。
 ```
 
 #### .speak(msg [, cb [, err ]] )
 
-Let TTSManager speak a string.
+使用TTSManager来朗读一段文字。
 
 ```javasciprt
 var ttsmanager = new TTSManager([NativeSpeaker, BaiduSpeaker]);
@@ -154,7 +151,7 @@ ttsmanager.speak('Something to speak');
 
 #### .speakTrack(msgs [, cb [, opts [, err ]]] )
 
-Let TTSManager speak a list of strings.
+使用TTSManager来朗读一系列文字。
 
 ```javascript
 var ttsmanager = new TTSManager([NativeSpeaker, BaiduSpeaker]);
