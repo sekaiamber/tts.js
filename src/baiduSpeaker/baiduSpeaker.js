@@ -12,7 +12,7 @@ export default class BaiduSpeaker extends BaseSpeaker {
       if ('undefined' === typeof window.Audio)
         return cb({
           base: false,
-          track: false
+          book: false
         });
 
       let audio = new Audio();
@@ -21,11 +21,11 @@ export default class BaiduSpeaker extends BaseSpeaker {
       // if "maybe" to do asynchronous check by loading MP3 data: URI
       let ret = {
         base: false,
-        track: false,
+        book: false,
       }
       if ('probably' === audio.canPlayType('audio/mpeg')) {
         ret.base = true;
-        ret.track = true;
+        ret.book = true;
       }
 
       //If this event fires, then MP3s can be played
@@ -40,7 +40,7 @@ export default class BaiduSpeaker extends BaseSpeaker {
         // audio.readyState is 4
         // audio.duration is 1 (always 1)
         // audio.buffered.length is 0 (always 0)
-        ret.track = audio.networkState == 1 && audio.readyState == 4 && audio.duration > 0 && audio.buffered.length > 0 && (audio.buffered.end(0) - audio.buffered.start(0)) > 0;
+        ret.book = audio.networkState == 1 && audio.readyState == 4 && audio.duration > 0 && audio.buffered.length > 0 && (audio.buffered.end(0) - audio.buffered.start(0)) > 0;
         cb(ret);
       }, false);
 
@@ -48,7 +48,7 @@ export default class BaiduSpeaker extends BaseSpeaker {
       audio.addEventListener('error', function () {
         cb({
           base: false,
-          track: false
+          book: false
         });
       }, false);
 
@@ -60,7 +60,7 @@ export default class BaiduSpeaker extends BaseSpeaker {
     catch (e) {
       return cb({
         base: false,
-        track: false
+        book: false
       });
     }
   }

@@ -13,7 +13,7 @@ export default class NativeSpeaker extends BaseSpeaker {
         // Safari, firefox
         return cb({
           base: true,
-          track: true
+          book: true
         });
       } else {
         // chrome
@@ -21,14 +21,14 @@ export default class NativeSpeaker extends BaseSpeaker {
           voices = window.speechSynthesis.getVoices().filter(function(v) {return v.lang == 'zh-CN'});
           return cb({
             base: voices.length > 0,
-            track: voices.length > 0,
+            book: voices.length > 0,
           });
         };
       }
     } else {
       return cb({
         base: false,
-        track: false
+        book: false
       });
     }
   }

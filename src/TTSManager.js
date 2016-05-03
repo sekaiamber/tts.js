@@ -10,7 +10,7 @@ export default class TTSManager {
         order: i,
         available: {
           base: false,
-          track: false,
+          book: false,
         },
       };
     });
@@ -73,7 +73,7 @@ export default class TTSManager {
     }
   }
   
-  speakTrack(msgs, cb, opts, err) {
+  speakBook(msgs, cb, opts, err) {
     opts = opts || this.noop;
     cb = cb || this.noop;
     err = err || this.noop;
@@ -86,23 +86,23 @@ export default class TTSManager {
     msgs = msgs.map(function(msg) {
       return new self.speaker.factory.Chapter(msg);
     });
-    var track = new this.speaker.factory.Track(msgs);
+    var book = new this.speaker.factory.Book(msgs);
     for (var key in opts) {
       if (opts.hasOwnProperty(key)) {
-        track[key] = opts[key];
+        book[key] = opts[key];
       }
     }
     var speaker = this.speaker.speaker;
-    Console.log('speaking track start');
+    Console.log('speaking book start');
     this.speaking = true;
-    speaker.speak(track, function() {
+    speaker.speak(book, function() {
       self.speaking = false;
-      Console.log('speaking track end');
+      Console.log('speaking book end');
       cb();
     }, function () {
       self.speaking = false;
       Console.log('an error occor');
-      Console.log('speaking track end');
+      Console.log('speaking book end');
       err();
     });
   }

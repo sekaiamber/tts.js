@@ -44,26 +44,26 @@ NativeSpeaker.available(function(res) {
 // 返回结果如下形式
 // {
 //   base: true,
-//   track: true,
+//   book: true,
 // }
-// 这表示浏览器支持NativeSpeaker的基本功能和支持播放Track
+// 这表示浏览器支持NativeSpeaker的基本功能和支持播放Book
 ```
 
 #### .speak( source [, cb [, err]] )
 
-Speaker实例可以播放Chapter实例或者Track实例（两者均继承自Source实例）。
+Speaker实例可以播放Chapter实例或者Book实例（两者均继承自Source实例）。
 
 ```javascript
 // 初始化一个Speaker
 var speaker = new NativeSpeaker();
-speaker.speak(a_chapter_or_track, function() {
+speaker.speak(a_chapter_or_book, function() {
   console.log('finish');
 });
 ```
 
-#### Chapter和Track
+#### Chapter和Book
 
-Speaker类应该实现两个静态属性：Chapter和Track。它们能指出这个Speaker推荐使用哪个Chapter和Track。
+Speaker类应该实现两个静态属性：Chapter和Book。它们能指出这个Speaker推荐使用哪个Chapter和Book。
 
 ```javascript
 var speaker = new NativeSpeaker();
@@ -88,9 +88,9 @@ var chapter = new NativeSpeaker.Chapter('Something to speak', 'en-US');
 chapter.play();
 ```
 
-### Track
+### Book
 
-Track类可以将多个Chapter实例连接起来。
+Book类可以将多个Chapter实例连接起来。
 
 #### .play( [callback [, err ]] )
 
@@ -105,8 +105,8 @@ var msgs = [
 var chapters = msgs.map(function(msg) {
   return new NativeSpeaker.Chapter(msg);
 });
-var track = new NativeSpeaker.Track(chapters, 'en-US');
-track.play();
+var book = new NativeSpeaker.Book(chapters, 'en-US');
+book.play();
 ```
 
 ### Use TTSManager
@@ -149,13 +149,13 @@ ttsmanager.speak('Something to speak');
 ttsmanager.speak('Something to speak');
 ```
 
-#### .speakTrack(msgs [, cb [, opts [, err ]]] )
+#### .speakBook(msgs [, cb [, opts [, err ]]] )
 
 使用TTSManager来朗读一系列文字。
 
 ```javascript
 var ttsmanager = new TTSManager([NativeSpeaker, BaiduSpeaker]);
-ttsmanager.speakTrack([
+ttsmanager.speakBook([
   'Something to speak',
   'Long long ago',
   'There is a beautiful girl'

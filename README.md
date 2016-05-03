@@ -45,27 +45,27 @@ NativeSpeaker.available(function(res) {
 // The result look like this:
 // {
 //   base: true,
-//   track: true,
+//   book: true,
 // }
 // This means the browser support NativeSpeaker's base service and
-// support play track.
+// support play book.
 ```
 
 #### .speak( source [, cb [, err]] )
 
-Speaker instance can speak an source class instance(Chapter or Track).
+Speaker instance can speak an source class instance(Chapter or Book).
 
 ```javascript
 // get an instance
 var speaker = new NativeSpeaker();
-speaker.speak(a_chapter_or_track, function() {
+speaker.speak(a_chapter_or_book, function() {
   console.log('finish');
 });
 ```
 
-#### Chapter and Track
+#### Chapter and Book
 
-Speaker should implement 2 static properties: Chapter and Track. They can point which chapter or track class are recommended to be used in this speaker.
+Speaker should implement 2 static properties: Chapter and Book. They can point which chapter or book class are recommended to be used in this speaker.
 
 ```javascript
 var speaker = new NativeSpeaker();
@@ -90,9 +90,9 @@ var chapter = new NativeSpeaker.Chapter('Something to speak', 'en-US');
 chapter.play();
 ```
 
-### Track
+### Book
 
-Track class can combine multiple Chapters one by one.
+Book class can combine multiple Chapters one by one.
 
 #### .play( [callback [, err ]] )
 
@@ -107,8 +107,8 @@ var msgs = [
 var chapters = msgs.map(function(msg) {
   return new NativeSpeaker.Chapter(msg);
 });
-var track = new NativeSpeaker.Track(chapters, 'en-US');
-track.play();
+var book = new NativeSpeaker.Book(chapters, 'en-US');
+book.play();
 ```
 
 ### Use TTSManager
@@ -152,13 +152,13 @@ ttsmanager.speak('Something to speak');
 ttsmanager.speak('Something to speak');
 ```
 
-#### .speakTrack(msgs [, cb [, opts [, err ]]] )
+#### .speakBook(msgs [, cb [, opts [, err ]]] )
 
 Let TTSManager speak a list of strings.
 
 ```javascript
 var ttsmanager = new TTSManager([NativeSpeaker, BaiduSpeaker]);
-ttsmanager.speakTrack([
+ttsmanager.speakBook([
   'Something to speak',
   'Long long ago',
   'There is a beautiful girl'

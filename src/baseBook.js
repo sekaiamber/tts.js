@@ -1,7 +1,7 @@
 import Console from './_utils/devtoolConsole';
 import BaseSource from './baseSource';
 
-export default class BaseTrack extends BaseSource {
+export default class BaseBook extends BaseSource {
   constructor(chapters) {
     super();
     chapters = chapters || [];
