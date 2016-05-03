@@ -30,8 +30,8 @@ var config = {
             minSizeReduce: 1.5,
             moveToParents: true
       }),
+      new webpack.optimize.DedupePlugin(),
       new ExtractTextPlugin("[name].[hash].css"),
-      new webpack.optimize.DedupePlugin()
   ],
   module: {
       loaders: [

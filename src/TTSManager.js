@@ -29,7 +29,7 @@ export default class TTSManager {
           if (res.base) {
             if (self.speaker == null || (self.speaker && self.speaker.order > speaker.order)) {
               self.speaker = speaker;
-              self.availableChange();
+              self.available();
             }
           }
         });
@@ -38,11 +38,11 @@ export default class TTSManager {
   }
   noop() {}
   
-  availableChange(cb) {
+  available(cb) {
     if (cb) {
       this._availableCallbacks.push(cb);
       if (this.speaker) {
-        this.availableChange();
+        this.available();
       }
     } else {
       for (var i = 0; i < this._availableCallbacks.length; i++) {
