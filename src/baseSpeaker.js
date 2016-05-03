@@ -1,4 +1,4 @@
-import BaseTrack from './baseTrack';
+import BaseBook from './baseBook';
 import BaseChapter from './baseChapter';
 
 export default class BaseSpeaker {
@@ -20,5 +20,5 @@ export default class BaseSpeaker {
   static available(cb) { throw new Error('Not yet implemented'); };
 }
 
-BaseSpeaker.Track = BaseTrack;
+BaseSpeaker.Book = BaseBook;
 BaseSpeaker.Chapter = BaseChapter;
