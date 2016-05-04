@@ -1,5 +1,1 @@
-$(document).ready(function() {
-  $('div[name=js-placeholder]').each(function() {
-    console.log($(this).html());
-  });
-});
+console.log('This would be the main JS file.');
