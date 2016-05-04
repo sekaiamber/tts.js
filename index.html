@@ -56,7 +56,9 @@
 
 <p>When you get a <code>TTSManager</code> instance, the only thing you need to do is call the <code>.speak</code> function:</p>
 
-<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> str <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>something to speak<span class="pl-pds">'</span></span>;
+<p name="js-example">example_speak</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> str <span class="pl-k">=</span> <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>.example-1<span class="pl-pds">'</span></span>).<span class="pl-en">val</span>();
 <span class="pl-smi">ttsmanager</span>.<span class="pl-en">speak</span>(str, <span class="pl-k">function</span>() {
   <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>speaking finish<span class="pl-pds">'</span></span>);
 });</pre></div>
