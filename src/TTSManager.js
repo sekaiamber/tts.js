@@ -29,8 +29,8 @@ export default class TTSManager {
           if (res.base) {
             if (self.speaker == null || (self.speaker && self.speaker.order > speaker.order)) {
               self.speaker = speaker;
-              self.available();
             }
+            self.available();
           }
         });
       })(speaker);
