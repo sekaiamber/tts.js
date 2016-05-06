@@ -8,10 +8,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-<link rel="stylesheet" type="text/css" href="stylesheets/screen_custom.css" media="screen">
-<script src="http://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
-<script src="javascripts/tts.min.js"></script>
-<script src="javascripts/page.js"></script>
+
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -53,17 +50,33 @@
 <div class="highlight highlight-source-js"><pre><span class="pl-c">// Pass one or more speakers into manager</span>
 <span class="pl-k">var</span> ttsmanager <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">TTSManager</span>([NativeSpeaker, BaiduSpeaker]);</pre></div>
 
-<p>Each <code>Speaker</code> instance represents each TTS service that <code>TTSManager</code> can use. <code>tts.js</code> provide several built-in TTS <code>Speakers</code>, and you can build your own <code>Speaker</code> class by just implementing a few functions and properties in order to bw operated by <code>TTSManager</code>.</p>
+<p>Each <code>Speaker</code> instance represents each TTS service that <code>TTSManager</code> can use. <code>tts.js</code> provide several built-in TTS <code>Speakers</code>, and you can build your own <code>Speaker</code> class by just implementing a few functions and properties in order to be  operated by <code>TTSManager</code>.</p>
 
 <p>Till now, <code>tts.js</code> provide these <code>Speaker</code>.</p>
 
 <p>When you get a <code>TTSManager</code> instance, the only thing you need to do is call the <code>.speak</code> function:</p>
 
-<p name="js-example">example_speak</p>
+<p name="js-placeholder">example_speak</p>
 
-<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> str <span class="pl-k">=</span> <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>.example-1<span class="pl-pds">'</span></span>).<span class="pl-en">val</span>();
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> str <span class="pl-k">=</span> <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>.example-speak-input<span class="pl-pds">'</span></span>).<span class="pl-en">val</span>();
 <span class="pl-smi">ttsmanager</span>.<span class="pl-en">speak</span>(str, <span class="pl-k">function</span>() {
   <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>speaking finish<span class="pl-pds">'</span></span>);
+});</pre></div>
+
+<p>And <code>tts.js</code> can read sentences one by one, we call them as a 'book'. Use <code>.speakBook</code> function to read a book:</p>
+
+<p name="js-placeholder">example_speak_book</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> strs <span class="pl-k">=</span> <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>.example-speak-book span<span class="pl-pds">'</span></span>).<span class="pl-en">map</span>(<span class="pl-k">function</span>() {
+  <span class="pl-k">return</span> <span class="pl-en">$</span>(<span class="pl-v">this</span>).<span class="pl-en">html</span>();
+});
+<span class="pl-smi">ttsmanager</span>.<span class="pl-en">speakBook</span>(strs, <span class="pl-k">function</span>() {
+  <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>speaking finish<span class="pl-pds">'</span></span>);
+}, {
+  <span class="pl-en">onChapterStart</span><span class="pl-k">:</span> <span class="pl-k">function</span>() {
+  },
+  <span class="pl-en">onChapterEnded</span><span class="pl-k">:</span> <span class="pl-k">function</span>() {
+  }
 });</pre></div>
         </section>
 
