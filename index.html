@@ -8,10 +8,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-<link rel="stylesheet" type="text/css" href="stylesheets/screen_custom.css" media="screen">
-<script src="http://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
-<script src="javascripts/tts.min.js"></script>
-<script src="javascripts/page.js"></script>
+
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -59,16 +56,17 @@
 
 <p>When you get a <code>TTSManager</code> instance, the only thing you need to do is call the <code>.speak</code> function:</p>
 
-<p name="js-placeholder">example_speak</p>
-
 <div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> str <span class="pl-k">=</span> <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>.example-speak-input<span class="pl-pds">'</span></span>).<span class="pl-en">val</span>();
 <span class="pl-smi">ttsmanager</span>.<span class="pl-en">speak</span>(str, <span class="pl-k">function</span>() {
   <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>speaking finish<span class="pl-pds">'</span></span>);
 });</pre></div>
 
-<p>And <code>tts.js</code> can read sentences one by one, we call them as a 'book'. Use <code>.speakBook</code> function to read a book:</p>
+<h2>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example:</h2>
 
-<p name="js-placeholder">example_speak_book</p>
+<p name="js-placeholder">example_speak</p>
+
+<p>And <code>tts.js</code> can read sentences one by one, we call them as a 'book'. Use <code>.speakBook</code> function to read a book:</p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> strs <span class="pl-k">=</span> <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>.example-speak-book span<span class="pl-pds">'</span></span>).<span class="pl-en">map</span>(<span class="pl-k">function</span>() {
   <span class="pl-k">return</span> <span class="pl-en">$</span>(<span class="pl-v">this</span>).<span class="pl-en">html</span>();
@@ -81,6 +79,32 @@
   <span class="pl-en">onChapterEnded</span><span class="pl-k">:</span> <span class="pl-k">function</span>() {
   }
 });</pre></div>
+
+<h2>
+<a id="example-1" class="anchor" href="#example-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example:</h2>
+
+<p name="js-placeholder">example_speak_book</p>
+
+<blockquote>
+<p>asfafasf</p>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+<th>hhh</th>
+<th>asfa</th>
+<th>asfas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alsfjlas</td>
+<td>asfas</td>
+<td>asfasf</td>
+</tr>
+</tbody>
+</table>
         </section>
 
         <aside id="sidebar">
