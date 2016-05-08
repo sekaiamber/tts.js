@@ -38,9 +38,10 @@ var text_cn = {
   split: '。',
 }
 var text_lang = {
-  'en_US': text_en,
-  'zh_CN': text_cn,
+  'en-US': text_en,
+  'zh-CN': text_cn,
 }
+var LANG;
 var Text;
 
 // placeholder
@@ -178,8 +179,12 @@ var placeholder = {
 }
 
 $(document).ready(function () {
-  window.__tts = new TTSManager([NativeSpeaker, BaiduSpeaker]);
-  Text = text_lang[$('p[doc-lang]').attr('doc-lang')];
+  LANG = $('p[doc-lang]').attr('doc-lang');
+  Text = text_lang[LANG];
+  window.__tts = new TTSManager([{
+    speaker: NativeSpeaker,
+    opt: [LANG]
+  }, BaiduSpeaker]);
   $('p[name=js-placeholder]').each(function () {
     var $dom = $(this);
     var tag = $dom.html();
