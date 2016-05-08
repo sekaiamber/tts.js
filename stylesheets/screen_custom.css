@@ -1,6 +1,9 @@
 p {
   text-align: justify;
 }
+th {
+  text-align: center;
+}
 .page-lang {
   border: #2e7bcf solid 1px;
   border-radius: 10px;

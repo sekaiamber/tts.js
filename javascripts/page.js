@@ -134,6 +134,20 @@ var placeholder = {
       $dom.append($text).append($info);
     }
     tts.available(t);
+  },
+  'support_speaker': function($dom) {
+    var tts = window.__tts;
+    $dom.empty();
+    var $table = $('<table><thead><tr><th>Speaker</th><th>Description</th></tr></thead><tbody></tbody></table>');
+    var $tbody = $('tbody', $table);
+    for (var i = 0; i < tts.speakers.length; i++) {
+      var speaker = tts.speakers[i];
+      var $tr = $('<tr></tr>');
+      $tr.append('<td>' + speakers[speaker.speaker.name].name + '</td>');
+      $tr.append('<td>' + speakers[speaker.speaker.name].description + '</td>');
+      $tbody.append($tr);
+    }
+    $dom.append($table);
   }
 }
 
