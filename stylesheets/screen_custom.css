@@ -57,3 +57,6 @@ p {
 .example-speak-book .example-speak-book-text span.speaking {
   background: #FFEB3B;
 }
+.example-speak-book blockquote {
+  font-size: 1.2em;
+}

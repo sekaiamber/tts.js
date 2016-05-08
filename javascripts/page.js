@@ -106,7 +106,7 @@ var placeholder = {
       $dom.empty().removeClass('warning');
       var book = Text.example_speak_book;
       var text = book.text.split('. ');
-      var $text = $('<p class="example-speak-book-text"></p>');
+      var $text = $('<blockquote class="example-speak-book-text"></blockquote>');
       for (var i = 0; i < text.length; i++) {
         var tt = i == text.length - 1 ? text[i] : text[i] + '. ';
         $text.append($('<span tts-index="' + i + '">' + tt + '</span>'));
@@ -114,11 +114,13 @@ var placeholder = {
       var $info = $('<p class="info"><span><i>' + book.title + '</i></span>, <span>"' + book.sub_title + '"</span>, <span>' + book.author + '</span><input type="button" value="Speak"></input></p>');
       var $bt = $('input', $info);
       $bt.click(function () {
+        $bt.attr('disabled', 'disabled');
         var strs = $('.example-speak-book-text span').map(function () {
           return $(this).html();
         });
         strs = Array.prototype.slice.call(strs);
         tts.speakBook(strs, function () {
+          $bt.removeAttr('disabled');
           console.log('speaking finish');
         }, {
           onChapterStart: function (source, index) {
