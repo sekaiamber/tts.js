@@ -23,7 +23,7 @@
     <header>
       <div class="inner">
         <h1>tts.js</h1>
-        <h2>Javascript API for the Text-to-Speech service, provide an interface to manage built-in TTS speaker or your own TTS service.</h2>
+        <h2>使用JavaScript实现的TTS服务API，这个库提供了几个内置的TTS Speaker，也提供了一个用来管理这些Speaker或者你自己实现的Speaker的Manager和接口。</h2>
         <a href="https://github.com/sekaiamber/tts.js" class="button"><small>View project on</small> GitHub</a>
       </div>
     </header>
@@ -31,12 +31,12 @@
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
-          <p name="js-placeholder">chinese_page</p>
+          <p name="js-placeholder">english_page</p>
 
 <h2>
-<a id="does-your-browser-support-tts-service" class="anchor" href="#does-your-browser-support-tts-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Does your browser support TTS service?</h2>
+<a id="does-your-browser-support-tts-service" class="anchor" href="#does-your-browser-support-tts-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>你的浏览器支持TTS服务吗？</h2>
 
-<p>First of all, we should know whether your browser support TTS service that provided by <code>tts.js</code> or not. Look at following table, <code>tts.js</code> can easily know the support of each speaker(type of each TTS service) we use:</p>
+<p>首先，我们需要知道你的浏览器是否支持<code>tts.js</code>提供的TTS服务。下面的表格显示了每种<code>tts.js</code>提供的Speaker是否有效，每个Speaker代表了一种类型的TTS服务：</p>
 
 <p name="js-placeholder">browser_support_table</p>
 
@@ -48,27 +48,27 @@
 <h2>
 <a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Getting Started</h2>
 
-<p><code>TTSManager</code> is the manager <code>tts.js</code> use to handle its TTS services. It is initialized with several <code>Speaker</code> constructors.</p>
+<p><code>TTSManager</code>是<code>tts.js</code>用来管理内部的TTS服务的对象。它根据传入的若干个<code>Speaker</code>构造函数来初始化。</p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-c">// Pass one or more speakers into manager</span>
 <span class="pl-k">var</span> ttsmanager <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">TTSManager</span>([NativeSpeaker, BaiduSpeaker]);</pre></div>
 
-<p>Each <code>Speaker</code> instance represents each TTS service that <code>TTSManager</code> can use. <code>tts.js</code> provide several built-in TTS <code>Speakers</code>, and you can build your own <code>Speaker</code> class by just implementing a few functions and properties in order to be  operated by <code>TTSManager</code>.</p>
+<p>每个<code>Speaker</code>实例代表了<code>TTSManager</code>能使用的每种TTS服务。<code>tts.js</code>提供了若干种内建的TTS<code>Speakers</code>，你也可以通过实现几个函数和属性来编写自己的<code>Speaker</code>类，并使它们能<code>TTSManager</code>使用。</p>
 
-<p>Till now, <code>tts.js</code> provide several <code>Speaker</code>, see <a href="#built-in-speaker-in-ttsjs">support list</a>.</p>
+<p>目前，<code>tts.js</code>提供了几种<code>Speaker</code>，可以点击<a href="#built-in-speaker-in-ttsjs">Speaker支持列表</a>查看。</p>
 
-<p>When you get a <code>TTSManager</code> instance, the only thing you need to do is call the <code>.speak</code> function:</p>
+<p>当你获得了一个<code>TTSManager</code>实例后，你唯一要做的就是调用它的<code>.speak</code>函数：</p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> str <span class="pl-k">=</span> <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>.example-speak-input<span class="pl-pds">'</span></span>).<span class="pl-en">val</span>();
 <span class="pl-smi">ttsmanager</span>.<span class="pl-en">speak</span>(str, <span class="pl-k">function</span>() {
   <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>speaking finish<span class="pl-pds">'</span></span>);
 });</pre></div>
 
-<p><strong>Example:</strong></p>
+<p><strong>例子：</strong></p>
 
 <p name="js-placeholder">example_speak</p>
 
-<p>And <code>tts.js</code> can read sentences one by one, I call them as a 'book'. Use <code>.speakBook</code> function to read a book:</p>
+<p>并且，<code>tts.js</code>可以一句一句地读句子，我讲这个集合称为一本“书”(Book)。可以使用<code>.speakBook</code>函数来读一本书：</p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> strs <span class="pl-k">=</span> <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>.example-speak-book span<span class="pl-pds">'</span></span>).<span class="pl-en">map</span>(<span class="pl-k">function</span>() {
   <span class="pl-k">return</span> <span class="pl-en">$</span>(<span class="pl-v">this</span>).<span class="pl-en">html</span>();
@@ -86,22 +86,22 @@
   }
 });</pre></div>
 
-<p><strong>Example:</strong></p>
+<p><strong>例子：</strong></p>
 
 <p name="js-placeholder">example_speak_book</p>
 
 <h2>
-<a id="built-in-speaker-in-ttsjs" class="anchor" href="#built-in-speaker-in-ttsjs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Built-in Speaker in <code>tts.js</code>
+<a id="built-in-speaker-in-ttsjs" class="anchor" href="#built-in-speaker-in-ttsjs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>tts.js</code>的内建Speaker列表
 </h2>
 
-<p>Now, <code>tts.js</code> provide following <code>Speaker</code>:</p>
+<p>当前，<code>tts.js</code>提供了以下<code>Speaker</code>：</p>
 
 <p name="js-placeholder">support_speaker</p>
 
 <h2>
-<a id="implement-your-own-speaker" class="anchor" href="#implement-your-own-speaker" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Implement your own Speaker</h2>
+<a id="implement-your-own-speaker" class="anchor" href="#implement-your-own-speaker" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>实现你自己的Speaker</h2>
 
-<p>Please view project on <a href="https://github.com/sekaiamber/tts.js">Github</a>, and you may get the detail of each Speaker in <code>src/XXX_Speaker</code>.</p>
+<p>请查看<a href="https://github.com/sekaiamber/tts.js">Github</a>中的项目，你也可以在<code>src/XXX_Speaker</code>找到每个Speaker具体的源码。</p>
 
 <h2>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LICENSE</h2>

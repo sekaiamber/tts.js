@@ -4,12 +4,21 @@ p {
 th {
   text-align: center;
 }
+html,
+header,
+a,
+#main-content h1,
+#main-content h2,
+#main-content h3,
+#main-content h4,
+#main-content h5 {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
 .page-lang {
   border: #2e7bcf solid 1px;
   border-radius: 10px;
   text-align: center;
   padding: 20px 0;
-  cursor: pointer;
   background: #F7FFD3;
 }
 .bt {

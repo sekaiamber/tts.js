@@ -27,7 +27,12 @@ var placeholder = {
   'chinese_page': function ($dom) {
     $dom.addClass('page-lang');
     $dom.empty();
-    $dom.append('中文说明');
+    $dom.append('<a href="./index_cn.html">中文说明</a>');
+  },
+  'english_page': function ($dom) {
+    $dom.addClass('page-lang');
+    $dom.empty();
+    $dom.append('<a href="./index.html">English Document</a>');
   },
   'browser_support_table': function ($dom) {
     var tts = window.__tts;
