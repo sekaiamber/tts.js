@@ -1,6 +1,59 @@
+p {
+  text-align: justify;
+}
 .page-lang {
   border: #2e7bcf solid 1px;
   border-radius: 10px;
   text-align: center;
   padding: 20px 0;
+  cursor: pointer;
+  background: #F7FFD3;
+}
+.bt {
+  cursor: pointer;
+}
+.warning {
+  border: #2e7bcf solid 1px !important;
+  border-radius: 10px !important;
+  text-align: center !important;
+  padding: 20px 0 !important;
+  background: #F7FFD3 !important;
+  color: #f00 !important;
+}
+.quick-demo {
+  border: #2e7bcf solid 1px;
+  border-radius: 10px;
+  padding: 10px;
+  height: 50px;
+}
+.quick-demo>div {
+  float: left;
+  line-height: 50px;
+  height: 50px;
+}
+.quick-demo>div.bt {
+  text-align: center;
+  width: 100px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background: #2e7bcf;
+  color: #fff;
+  margin-right: 30px; 
+}
+.example-speak input[type=text] {
+  width: 60%;
+  margin-right: 10px;
+}
+.example-speak-book .info {
+  text-align: right;
+}
+.example-speak-book .info:before {
+  content: '--';
+  margin-right: 10px;
+}
+.example-speak-book input {
+  margin-left: 10px;
+}
+.example-speak-book .example-speak-book-text span.speaking {
+  background: #FFEB3B;
 }
