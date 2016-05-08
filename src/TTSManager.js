@@ -4,9 +4,18 @@ export default class TTSManager {
   constructor(speakers) {
     // build speakers
     speakers = speakers.map((s, i) => {
+      var fac = null;
+      var opt = [];
+      if (typeof s == 'function') {
+        fac = s
+      } else if (typeof s == 'object'){
+        fac = s.speaker,
+        opt = s.opt ? s.opt : []
+      }
+      opt = [null].concat(opt);
       return {
-        factory: s,
-        speaker: new s(),
+        factory: fac,
+        speaker: new (fac.bind.apply(fac, opt))(),
         order: i,
         available: {
           base: false,
